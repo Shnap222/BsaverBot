@@ -1,0 +1,36 @@
+bot:
+  API_KEY: 5187477632:AAHw_HitQ4jw1SQqGvpQ0VULXpB9D9WkbrQ
+  ID: 0
+  USERNAME: BsaverBot
+responses:
+  ADD_COMMAND: "Who would you like to add?\n\n*You can type multiple entries*\n\n\
+    Format : \n    firstname lastname dd/mm\n"
+  ADD_ERROR: 'Couldn''t add user.
+
+    Reason:
+
+    '
+  ADD_SUCCESS: Added users
+  HELP: ''
+  REMOVE_COMMAND: "Who would you like to remove?\n\n*You can type multiple entries*\n\
+    \nFormat : \n    firstname lastname\n"
+  REMOVE_ERROR: 'Couldn''t remove user.
+
+    Reason:
+
+    '
+  REMOVE_SUCCESS: Removed users
+  WHEN_COMMAND:  "Who would you like to see?\n\n*You can enter partial string if you use the char * to fill your word*\n\
+    \nFormat : \n    firstname lastname\n"
+  WHEN_ERROR:  'Couldn''t find user.
+
+    Reason:
+
+    '
+  WHEN_SUCCESS:  "Users\n\n"
+  CLOSE_COMMAND: "Select the date range in days that you want to see\n\n available range 0-365"
+  CLOSE_ERROR: 'Couldn''t search dates.
+
+    Reason:
+
+    '
