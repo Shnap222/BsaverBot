@@ -50,7 +50,7 @@ Format :
 #            types.InlineKeyboardButton("No", callback_data="start"))
 
 replyMarkup = types.ReplyKeyboardMarkup(one_time_keyboard=True)
-replyMarkup.add('add', 'show')
+replyMarkup.add('/add', '/remove','/when','/close','/today','/help')
 
 ADD_TEXT = """Who would you like to add?
 
@@ -81,7 +81,7 @@ if __name__ == '__main__':
 #
 @bot.message_handler(commands=['start', "help"])
 def start(message):
-    # msg = bot.reply_to(message, 'What is your gender', reply_markup=replyMarkup)
+    msg = bot.send_message(message.chat.id, responses['START_COMMAND'], reply_markup=replyMarkup,parse_mode='HTML')
     # bot.register_next_step_handler(msg,start)
     print(message)
 
@@ -97,7 +97,7 @@ def add_process(message):
     outcome = add_users(message)
 
     if outcome:
-        msg = bot.send_message(message.chat.id, text=responses["ADD_SUCCESS"])
+        msg = bot.send_message(message.chat.id, text=responses["ADD_SUCCESS"], reply_markup=replyMarkup)
 
 
 def add_users(message):
@@ -132,7 +132,7 @@ def remove_process(message):
     outcome = remove_users(message)
 
     if outcome:
-        msg = bot.send_message(message.chat.id, text=responses["REMOVE_SUCCESS"])
+        msg = bot.send_message(message.chat.id, text=responses["REMOVE_SUCCESS"], reply_markup=replyMarkup)
 
 
 def remove_users(message):
@@ -187,7 +187,7 @@ def when_process(message):
             print(users[0][3])
             print(type(users[0][3]))
             users.sort(key=lambda user: datetime.datetime.strptime(f'{user[3]}', "%d/%m"))
-            bot.send_message(message.chat.id, text=f"{responses['WHEN_SUCCESS']} {convertListToString(users)}")
+            bot.send_message(message.chat.id, text=f"{responses['WHEN_SUCCESS']} {convertListToString(users)}", reply_markup=replyMarkup)
     else:
         print("validation error")
         error_call("WHEN", "Wrong Syntax", message.chat.id)
@@ -225,11 +225,11 @@ def close_process(message):
             closeDates.append(user)
 
     if len(closeDates) == 0:
-        bot.send_message(message.chat.id, text="Couldn't find any users in the specified date range")
+        bot.send_message(message.chat.id, text="Couldn't find any users in the specified date range", reply_markup=replyMarkup)
 
     else:
         closeDates.sort(key=lambda user: datetime.datetime.strptime(f'{user[3]}', "%d/%m"))
-        bot.send_message(message.chat.id, text=f"{responses['WHEN_SUCCESS']} {convertListToString(closeDates)}")
+        bot.send_message(message.chat.id, text=f"{responses['WHEN_SUCCESS']} {convertListToString(closeDates)}", reply_markup=replyMarkup)
 
 
 
@@ -243,10 +243,10 @@ def today(message):
 
 ##########################
 
-@bot.message_handler(commands=["test"])
-def test(message):
-    print(message.text.split(" "))
-    print(db.search(message.text.split(" ")[1], message.text.split(" ")[2]))
+# @bot.message_handler(commands=["test"])
+# def test(message):
+#     print(message.text.split(" "))
+#     print(db.search(message.text.split(" ")[1], message.text.split(" ")[2]))
 
 
 ######################
@@ -295,7 +295,7 @@ def convertListToString(array):
 
 
 def error_call(command, reason, chatID):
-    bot.send_message(chatID, text=f'{responses[f"{command}_ERROR"]} {reason}')
+    bot.send_message(chatID, text=f'{responses[f"{command}_ERROR"]} {reason}', reply_markup=replyMarkup)
 
 
 bot.polling()

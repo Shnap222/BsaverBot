@@ -33,6 +33,9 @@ class SqliteDB:
         :param birthday:
         :return:
         """
+        first = first.lower()
+        last = last.lower()
+
         if _connect:
             conn, c = _connect
         else:

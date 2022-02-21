@@ -3,6 +3,17 @@ bot:
   ID: 0
   USERNAME: BsaverBot
 responses:
+
+  START_COMMAND:  "<u>Welcome to BsaverBot! the bot that saves dates.</u>\n\n
+  These are the available commands:\n\n
+
+  <b>/start</b> or <b>/help</b> - shows this message\n\n
+  <b>/add</b> - adds a new user to the database\n\n
+  <b>/remove</b> - removes a user from the database\n\n
+  <b>/when</b> - gets the date of a specified user\n\n
+  <b>/close</b> - gets the dates of everyone that are in the specified date range\n\n
+  <b>/today</b> - shows all of the users that have a birthday today\n"
+
   ADD_COMMAND: "Who would you like to add?\n\n*You can type multiple entries*\n\n\
     Format : \n    firstname lastname dd/mm\n"
   ADD_ERROR: 'Couldn''t add user.
