@@ -9,8 +9,8 @@ from dbHandler import SqliteDB
 
 # ---------------VARIABLES---------------
 
-ShnapBot = "5279933162:AAHIu9eIrloXBz5cb5FV7Tp3PGV6o7C-_N0"
-BsaverBot = "5187477632:AAHw_HitQ4jw1SQqGvpQ0VULXpB9D9WkbrQ"
+ShnapBot = ""
+BsaverBot = ""
 
 bot_data = {
     "bot": {
